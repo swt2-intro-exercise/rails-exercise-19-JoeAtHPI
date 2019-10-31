@@ -10,7 +10,7 @@ describe "Created author page", type: :model do
   end
 
   it "should return first and last name as one string" do
-    expect(author.name()).to eq("Alan Turing")
+    expect(author.name).to eq("Alan Turing")
   end
 
 end
