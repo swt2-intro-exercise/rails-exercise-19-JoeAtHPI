@@ -9,4 +9,8 @@ describe "Created author page", type: :model do
 	expect(author.homepage).to eq("http://wikipedia.org/Alan_Turing")
   end
 
+  it "should return first and last name as one string" do
+    expect(author.name()).to eq("Alan Turing")
+  end
+
 end
