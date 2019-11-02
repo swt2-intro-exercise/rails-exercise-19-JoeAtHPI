@@ -18,4 +18,9 @@ describe "index author page", type: :feature do
     expect(@table).to have_text(alan.homepage)
     expect(@table).to have_link 'Show', href: author_path(alan)
   end
+
+  it "page should have a link to create a new author" do
+    visit authors_path
+    expect(page).to have_link 'New', href: new_author_path
+  end
 end
