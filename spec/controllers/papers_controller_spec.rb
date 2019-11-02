@@ -30,7 +30,7 @@ RSpec.describe PapersController, type: :controller do
   let(:valid_attributes) {
     { "title" => "Title",
       "venue" => "Venue",
-      "year" => "1234" }
+      "year" => "1234"}
   }
 
   let(:invalid_attributes) {
