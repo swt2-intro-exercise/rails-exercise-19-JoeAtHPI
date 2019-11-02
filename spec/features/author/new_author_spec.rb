@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 describe "New author page", type: :feature do
-  
+  invalid = Author.new(first_name:'Alan', last_name:'', homepage:'http://wikipedia.org/Alan_Turing')
+
   it "should render withour error" do
     visit new_author_path
   end
@@ -24,4 +25,14 @@ describe "New author page", type: :feature do
       find('input[type="submit"]').click
     }.to change(Author, :count).by(1)
   end
+
+  it "should show user validation error" do
+    visit new_author_path
+    page.fill_in 'author[first_name]', with: 'Alan'
+    page.fill_in 'author[last_name]', with: ''
+    page.fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+      find('input[type="submit"]').click
+    expect(page).to have_text("error")
+  end
+
 end
