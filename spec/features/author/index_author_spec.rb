@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 describe "index author page", type: :feature do
-  alan = FactoryBot.create :author
+  before(:each) do
+    @alan = FactoryBot.create :author
+  end
 
   it "should render withour error" do
     visit authors_path
@@ -14,10 +16,11 @@ describe "index author page", type: :feature do
     expect(@table).to have_text('Name')
     expect(@table).to have_text('Homepage')
 
-    expect(@table).to have_text(alan.name)
-    expect(@table).to have_text(alan.homepage)
-    expect(@table).to have_link 'Show', href: author_path(alan)
-    expect(@table).to have_link 'Edit', href: edit_author_path(alan)
+    expect(@table).to have_text(@alan.name)
+    expect(@table).to have_text(@alan.homepage)
+    expect(@table).to have_link 'Show', href: author_path(@alan)
+    expect(@table).to have_link 'Edit', href: edit_author_path(@alan)
+    expect(@table).to have_link 'Destroy', href: author_path(@alan)
   end
 
   it "page should have a link to create a new author" do

@@ -1,10 +1,12 @@
 require 'rails_helper'
 
 describe "show author page", type: :feature do
-  alan = FactoryBot.create :author
+  before(:each) do
+    @alan = FactoryBot.create :author
+  end
 
   it "should render withour error" do
-    visit author_path(alan)
+    visit author_path(@alan)
 
     expect(page).to have_text('Alan')
     expect(page).to have_text('Turing')

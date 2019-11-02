@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 describe "New author page", type: :feature do
-  invalid = Author.new(first_name:'Alan', last_name:'', homepage:'http://wikipedia.org/Alan_Turing')
-
   it "should render withour error" do
     visit new_author_path
   end
